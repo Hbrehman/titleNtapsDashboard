@@ -1,4 +1,5 @@
-#prod-table-body td {
+#prod-table-body td,
+#userTableBody td {
   vertical-align: middle;
 }
 

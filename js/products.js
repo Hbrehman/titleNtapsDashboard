@@ -27,7 +27,6 @@ async function listProductsOnUI() {
 }
 
 createProdBtn.addEventListener("click", async () => {
-  if (!isValid) return e.preventDefault();
   if (validateInput()) {
     const inputData = gatInputData();
     // console.log(inputData);
@@ -37,7 +36,7 @@ createProdBtn.addEventListener("click", async () => {
         inputData
       );
       if (response.data.status === "success") {
-        console.log(response);
+        // console.log(response);
         showAlert("success", "Product created Successfully");
         listProductsOnUI();
       }
@@ -62,6 +61,7 @@ function showProds(docs) {
             <td>${el.type}</td>
             <td>${el.price}</td>
             <td>${el.category}</td>
+                                      <!-- anchor in line below should be changed to button -->
             <td><a href="productDetails.html" class="btn btn-secondary" data-id="${el._id}">
             <i class="fas fa-angle-double-right" ></i> Details
           </a></td>

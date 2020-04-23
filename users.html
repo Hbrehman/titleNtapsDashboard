@@ -129,7 +129,7 @@
               <table class="table table-striped">
                 <thead class="thead-dark">
                   <tr>
-                    <th>#</th>
+                    <th>Picture</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th></th>
@@ -158,12 +158,12 @@
       </div>
     </footer>
 
-    <!-- ADD POST MODAL -->
+    <!-- ADD User MODAL -->
     <div class="modal fade" id="addUserModal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header bg-success text-white">
-            <h5 class="modal-title">Add Product</h5>
+            <h5 class="modal-title">Add User</h5>
             <button class="close" data-dismiss="modal">
               <span>&times;</span>
             </button>
@@ -171,53 +171,79 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="inputEmail4">Name</label>
-                <input type="text" class="form-control" placeholder="Name" />
+                <label for="userName">Name</label>
+                <input
+                  id="userName"
+                  type="text"
+                  class="form-control"
+                  placeholder="Name"
+                  required
+                  minlength="3"
+                />
               </div>
               <div class="form-group">
-                <label for="inputEmail4">Email</label>
-                <input type="text" class="form-control" placeholder="Email" />
+                <label for="userEmail">Email</label>
+                <input
+                  id="userEmail"
+                  type="text"
+                  class="form-control"
+                  placeholder="Email"
+                  required
+                />
               </div>
 
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="image">Profile Picture</label>
+                  <label for="userImage">Profile Picture</label>
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="image" />
-                    <label for="image" class="custom-file-label"
+                    <input
+                      id="userImage"
+                      type="file"
+                      class="custom-file-input"
+                      id="image"
+                    />
+                    <label for="userImage" class="custom-file-label"
                       >Choose Image</label
                     >
                   </div>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="role">Role</label>
-                  <select class="form-control">
+                  <select id="userRole" class="form-control">
                     <option value="manager">Manager</option>
-                    <option value="user">User</option>
+                    <option value="user" selected>User</option>
                   </select>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="inputEmail4">Password</label>
+                <label for="userPassword">Password</label>
                 <input
-                  type="text"
+                  id="userPassword"
+                  type="password"
                   class="form-control"
                   placeholder="Password"
+                  required
+                  minlength="6"
+                  maxlength="255"
                 />
               </div>
               <div class="form-group">
-                <label for="inputEmail4">Confirm Password</label>
+                <label for="userPasswordCnfrm">Confirm Password</label>
                 <input
-                  type="text"
+                  id="userPasswordCnfrm"
+                  type="password"
                   class="form-control"
                   placeholder="Confirm Password"
+                  required
+                  minlength="6"
+                  maxlength="255"
                 />
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success" data-dismiss="modal">
+            <button id="createUserBtn" class="btn btn-success">
               Create Product
             </button>
           </div>

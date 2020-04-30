@@ -169,7 +169,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form enctype="multipart/form-data">
               <div class="form-group">
                 <label for="userName">Name</label>
                 <input
@@ -197,8 +197,9 @@
                   <label for="userImage">Profile Picture</label>
                   <div class="custom-file">
                     <input
-                      id="userImage"
+                      id="user-avatar"
                       type="file"
+                      name="photo"
                       class="custom-file-input"
                       id="image"
                     />

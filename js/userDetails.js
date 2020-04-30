@@ -14,7 +14,7 @@ window.addEventListener("load", async () => {
 async function getUserFromServer() {
   try {
     const response = await axios.get(
-      `http://localhost:4000/api/v1/users/${userId}`
+      `http://127.0.0.1:4000/api/v1/users/${userId}`
     );
     return response.data.data;
   } catch (ex) {

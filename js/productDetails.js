@@ -20,7 +20,7 @@ const productCoverImage = document.getElementById("coverImage");
 window.addEventListener("load", async () => {
   try {
     const response = await axios.get(
-      `http://localhost:4000/api/v1/products/${productId}`
+      `http://127.0.0.1:4000/api/v1/products/${productId}`
     );
     const product = response.data.data.doc;
     updateUI(product);
@@ -56,7 +56,7 @@ updateChangesBtn.addEventListener("click", async () => {
 async function patchToServer(inputData) {
   try {
     let response = await axios.patch(
-      `http://localhost:4000/api/v1/products/${productId}`,
+      `http://127.0.0.1:4000/api/v1/products/${productId}`,
       inputData
     );
     return response;
@@ -69,7 +69,7 @@ async function patchToServer(inputData) {
 deleteProdBtn.addEventListener("click", async () => {
   try {
     let response = await axios.delete(
-      `http://localhost:4000/api/v1/products/${productId}`
+      `http://127.0.0.1:4000/api/v1/products/${productId}`
     );
     if (response.status === 204) {
       showAlert("error", "Product delted Successfully");

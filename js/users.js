@@ -16,12 +16,11 @@ async function updateUsersList() {
 }
 
 btnCreateUser.addEventListener("click", async () => {
-  const inputData = getInputData();
-  if (validateInput(inputData)) {
-    console.log(inputData);
+  if (validateInput()) {
+    const inputData = getInputData();
     try {
       let response = await axios.post(
-        `http://localhost:4000/api/v1/users`,
+        `http://127.0.0.1:4000/api/v1/users`,
         inputData
       );
       console.log(response);
@@ -40,7 +39,7 @@ btnCreateUser.addEventListener("click", async () => {
 
 async function getDocsFromServer() {
   try {
-    const response = await axios.get("http://localhost:4000/api/v1/users");
+    const response = await axios.get("http://127.0.0.1:4000/api/v1/users");
     return response;
   } catch (ex) {
     console.log(ex);
@@ -84,16 +83,46 @@ function validateInput() {
     showAlert("error", "Password confirm is a required Field.");
   } else if (userPasswordCnfrm.value !== userPassword.value) {
     showAlert("error", "Password & Password confirm should be same");
+  } else if (!document.querySelector("#user-avatar").files[0]) {
+    showAlert("error", "Please Upload users Profile Picture");
   } else {
     return true;
   }
 }
 
 function getInputData() {
-  const name = userName.value;
-  const email = userEmail.value;
-  const password = userPassword.value;
-  const passwordConfirm = userPasswordCnfrm.value;
-  const role = userRole.value;
-  return { name, email, password, passwordConfirm, role };
+  const form = new FormData();
+  form.append("photo", document.querySelector("#user-avatar").files[0]);
+  form.append("name", userName.value);
+  form.append("email", userEmail.value);
+  form.append("password", userPassword.value);
+  form.append("passwordConfirm", userPasswordCnfrm.value);
+  form.append("role", userRole.value);
+  return form;
 }
+
+const hideAlert = () => {
+  $(".alert").alert("close");
+};
+const showAlert = (type, message) => {
+  hideAlert();
+  const markup = `<div class="alert alert--${type}">${message}</div>`;
+  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
+  window.setTimeout(hideAlert, 5000);
+};
+
+// // Get and uplaod Upload profile pic
+// elements.userAvatar.addEventListener("change", async () => {
+//   const input = document.querySelector("#user-avatar").files[0];
+//   const form = new FormData();
+//   form.append("photo", input);
+//   const response = await uploadProfPic("profilePic", form, userId);
+//   if (response.status === 200) {
+//     setTimeout(() => {
+//       elements.profilePic.setAttribute(
+//         "src",
+//         `http://localhost:8000/img/user/${response.data.data.photo}`
+//       );
+//     }, 0);
+//   }
+// });

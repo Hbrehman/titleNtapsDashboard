@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
 
 async function listProductsOnUI() {
   try {
-    const response = await axios.get("http://localhost:4000/api/v1/products");
+    const response = await axios.get("http://127.0.0.1:4000/api/v1/products");
     result = response.data.data.doc;
     showProds(result);
   } catch (ex) {
@@ -32,7 +32,7 @@ createProdBtn.addEventListener("click", async () => {
     // console.log(inputData);
     try {
       let response = await axios.post(
-        `http://localhost:4000/api/v1/products`,
+        `http://127.0.0.1:4000/api/v1/products`,
         inputData
       );
       if (response.data.status === "success") {

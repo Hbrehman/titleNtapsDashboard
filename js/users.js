@@ -45,21 +45,23 @@ async function getDocsFromServer() {
     console.log(ex);
   }
 }
-
+// "./img/avatar.png"
 function renderUsers(docs) {
   usersTable.innerHTML = "";
   let markup = "";
   docs.forEach((el) => {
-    markup += `<tr>
-    <th scope="row">
-        <img src="./img/avatar.png" width="64" height="64" alt="" />
-    </th>
-    <td>${el.name}</td>
-    <td>${el.email}</td>
-    <td><button id="BtnUserDetails" class="btn btn-secondary" data-id="${el._id}">
-    <i class="fas fa-angle-double-right" ></i> Details
-  </button></td>
-  </tr>`;
+    if (el.role === "user") {
+      markup += `<tr>
+      <th scope="row">
+          <img src="http://127.0.0.1:4000/img/users/${el.photo}" width="64" height="64" alt="" />
+      </th>
+      <td>${el.name}</td>
+      <td>${el.email}</td>
+      <td><button id="BtnUserDetails" class="btn btn-secondary" data-id="${el._id}">
+      <i class="fas fa-angle-double-right" ></i> Details
+    </button></td>
+    </tr>`;
+    }
   });
   usersTable.insertAdjacentHTML("beforeend", markup);
 }
@@ -83,8 +85,6 @@ function validateInput() {
     showAlert("error", "Password confirm is a required Field.");
   } else if (userPasswordCnfrm.value !== userPassword.value) {
     showAlert("error", "Password & Password confirm should be same");
-  } else if (!document.querySelector("#user-avatar").files[0]) {
-    showAlert("error", "Please Upload users Profile Picture");
   } else {
     return true;
   }
@@ -110,19 +110,3 @@ const showAlert = (type, message) => {
   document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
   window.setTimeout(hideAlert, 5000);
 };
-
-// // Get and uplaod Upload profile pic
-// elements.userAvatar.addEventListener("change", async () => {
-//   const input = document.querySelector("#user-avatar").files[0];
-//   const form = new FormData();
-//   form.append("photo", input);
-//   const response = await uploadProfPic("profilePic", form, userId);
-//   if (response.status === 200) {
-//     setTimeout(() => {
-//       elements.profilePic.setAttribute(
-//         "src",
-//         `http://localhost:8000/img/user/${response.data.data.photo}`
-//       );
-//     }, 0);
-//   }
-// });

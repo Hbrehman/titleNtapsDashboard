@@ -39,7 +39,7 @@ async function loginUser(userData) {
       window.location = "index.html";
     }
   } catch (ex) {
-    console.log(ex.response);
+    console.log(ex);
     console.log(ex.response.data);
     showAlert("error", ex.response.data.message);
   }

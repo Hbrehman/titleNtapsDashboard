@@ -40,7 +40,7 @@ async function loginUser(userData) {
     console.log(response);
     if (response.status === 200) {
       //   showAlert("success", "You are successfully logged In.");
-      window.location = "index.html";
+      window.location = "dashboard.html";
     }
   } catch (ex) {
     console.log(ex);

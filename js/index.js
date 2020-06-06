@@ -7,7 +7,7 @@ logoutLink.addEventListener("click", async () => {
     const response = await axios.get(`${url}api/v1/users/logout`);
     if (response.data.status === "success") {
       localStorage.clear();
-      window.location = "login.html";
+      window.location = "index.html";
     }
   } catch (ex) {
     console.log(ex);

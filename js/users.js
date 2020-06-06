@@ -1,3 +1,6 @@
+const url = "https://tilentaps.herokuapp.com/";
+// const url = "http://127.0.0.1:4000/";
+
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
 const userRole = document.getElementById("userRole");
@@ -19,10 +22,7 @@ btnCreateUser.addEventListener("click", async () => {
   if (validateInput()) {
     const inputData = getInputData();
     try {
-      let response = await axios.post(
-        `http://127.0.0.1:4000/api/v1/users`,
-        inputData
-      );
+      let response = await axios.post(`${url}api/v1/users`, inputData);
       console.log(response);
       if (response.data.status === "success") {
         showAlert("success", "User created Successfully");
@@ -39,7 +39,7 @@ btnCreateUser.addEventListener("click", async () => {
 
 async function getDocsFromServer() {
   try {
-    const response = await axios.get("http://127.0.0.1:4000/api/v1/users");
+    const response = await axios.get(`${url}api/v1/users`);
     return response;
   } catch (ex) {
     console.log(ex);
@@ -53,7 +53,7 @@ function renderUsers(docs) {
     if (el.role === "user") {
       markup += `<tr>
       <th scope="row">
-          <img src="http://127.0.0.1:4000/img/users/${el.photo}" width="64" height="64" alt="" />
+          <img src="${url}img/users/${el.photo}" width="64" height="64" alt="" />
       </th>
       <td>${el.name}</td>
       <td>${el.email}</td>

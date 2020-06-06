@@ -1,3 +1,6 @@
+const url = "https://tilentaps.herokuapp.com/";
+// const url = "http://127.0.0.1:4000/";
+
 const userId = localStorage.getItem("userId");
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
@@ -15,9 +18,7 @@ window.addEventListener("load", async () => {
 
 async function getUserFromServer() {
   try {
-    const response = await axios.get(
-      `http://127.0.0.1:4000/api/v1/users/${userId}`
-    );
+    const response = await axios.get(`${url}api/v1/users/${userId}`);
     return response.data.data;
   } catch (ex) {
     console.log(ex.response.data.message);
@@ -39,7 +40,7 @@ updateBtn.addEventListener("click", async () => {
     const inputData = getInputData();
     try {
       const response = await axios.put(
-        `http://127.0.0.1:4000/api/v1/users/updateUser/${userId}`,
+        `${url}api/v1/users/updateUser/${userId}`,
         inputData
       );
       console.log(response.data.status);
@@ -85,7 +86,7 @@ function getInputData() {
 deleteBtn.addEventListener("click", async () => {
   try {
     const response = await axios.patch(
-      `http://127.0.0.1:4000/api/v1/users/DeleteUser/${userId}`
+      `${url}api/v1/users/DeleteUser/${userId}`
     );
     if (response.data.status === "success") {
       window.location = "users.html";

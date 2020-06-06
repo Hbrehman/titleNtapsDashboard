@@ -1,3 +1,5 @@
+const url = "https://tilentaps.herokuapp.com/";
+
 const dataForm = document.getElementById("prodDataForm");
 const prodHeadingName = document.getElementById("prodHeadingName");
 const productId = localStorage.getItem("prodId");
@@ -19,13 +21,12 @@ const productCoverImage = document.getElementById("coverImage");
 
 window.addEventListener("load", async () => {
   try {
-    const response = await axios.get(
-      `http://127.0.0.1:4000/api/v1/products/${productId}`
-    );
+    const response = await axios.get(`${url}api/v1/products/${productId}`);
     const product = response.data.data.doc;
     updateUI(product);
   } catch (ex) {
     console.log(ex);
+    showAlert("error", ex.response.data.message);
   }
 });
 
@@ -56,7 +57,7 @@ updateChangesBtn.addEventListener("click", async () => {
 async function patchToServer(inputData) {
   try {
     let response = await axios.patch(
-      `http://127.0.0.1:4000/api/v1/products/${productId}`,
+      `${url}api/v1/products/${productId}`,
       inputData
     );
     return response;
@@ -68,9 +69,7 @@ async function patchToServer(inputData) {
 
 deleteProdBtn.addEventListener("click", async () => {
   try {
-    let response = await axios.delete(
-      `http://127.0.0.1:4000/api/v1/products/${productId}`
-    );
+    let response = await axios.delete(`${url}api/v1/products/${productId}`);
     if (response.status === 204) {
       showAlert("error", "Product delted Successfully");
       window.location = "products.html";
@@ -95,59 +94,37 @@ function validateInput() {
   } else if (productDescription.value.length < 1) {
     showAlert("error", "Product Description is a required Field.");
   } else if (productCategory.value.length < 1) {
-    showAlert("error", "Please select Appropriated Category for Product.");
+    showAlert("error", "Please select Appropriate Category for Product.");
+  } else if (!document.querySelector("#coverImage").files[0]) {
+    showAlert("error", "Please Upload a Cover image for this Product.");
+  } else if (document.querySelector("#prodImages").files.length < 3) {
+    showAlert("error", "Please Upload at least three image of Product.");
   } else {
     return true;
   }
 }
 
 function gatInputData() {
-  const name = productTitle.value;
-  const price = productPrice.value;
-  const company = productCompany.value;
-  const type = productType.value;
-  const summary = productSummary.value;
-  const description = productDescription.value;
-  const category = productCategory.value;
-  console.log(category);
-  //   if ()
+  const form = new FormData();
+  form.append("name", productTitle.value);
+  form.append("price", productPrice.value);
+  form.append("company", productCompany.value);
+  form.append("type", productType.value);
+  form.append("summary", productSummary.value);
+  form.append("description", productDescription.value);
+  form.append("category", productCategory.value);
+  form.append("imageCover", document.querySelector("#coverImage").files[0]);
+  form.append("images", document.querySelector("#prodImages").files[0]);
+  form.append("images", document.querySelector("#prodImages").files[1]);
+  form.append("images", document.querySelector("#prodImages").files[2]);
 
   if (productSize.value.length > 1) {
-    const size = productSize.value;
-    if (productModel.value.length > 1) {
-      const model = productModel.value;
-      return {
-        name,
-        price,
-        company,
-        type,
-        summary,
-        description,
-        category,
-        model,
-        size,
-      };
-    }
-    return {
-      name,
-      price,
-      company,
-      type,
-      summary,
-      description,
-      category,
-      size,
-    };
+    form.append("size", productSize.value);
   }
-  return {
-    name,
-    price,
-    company,
-    type,
-    summary,
-    description,
-    category,
-  };
+  if (productModel.value.length > 1) {
+    form.append("model", productModel.value);
+  }
+  return form;
 }
 
 const hideAlert = () => {

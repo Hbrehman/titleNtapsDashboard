@@ -17,7 +17,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Bootstrap Theme</title>
+    <title>Products | tileNtaps</title>
   </head>
 
   <body>
@@ -96,7 +96,7 @@
               href="#"
               class="btn btn-primary btn-block"
               data-toggle="modal"
-              data-target="#addPostModal"
+              data-target="#addProdModal"
             >
               <i class="fas fa-barcode-alt"></i>
               <i class="fa fa-plus"></i> Add Product
@@ -225,7 +225,7 @@
     </footer>
 
     <!-- ADD POST MODAL -->
-    <div class="modal fade" id="addPostModal">
+    <div class="modal fade" id="addProdModal">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header bg-primary text-white">
@@ -235,7 +235,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form enctype="multipart/form-data">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="prodTitle">Product Title</label>
@@ -256,16 +256,28 @@
                   />
                 </div>
               </div>
+
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="prodType">Product Type</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="prodType"
-                    placeholder=""
-                  />
+                  <select id="prodType" class="form-control">
+                    <option value="">Select Product Type</option>
+                    <option value="floor tile">Floor Tile</option>
+                    <option value="wall tile">Wall Tile</option>
+                    <option value="kitchen tile">Kitchen Tile</option>
+                    <option value="bath tile">Bath Tile</option>
+                    <option value="basin mixer">Basin Mixer</option>
+                    <option value="bathroom set">Bathroom Set</option>
+                    <option value="faucet">Faucet</option>
+                    <option value="accessory set">Accessory Set</option>
+                    <option value="shower">Shower</option>
+                    <option value="indian seat">Indian Seat</option>
+                    <option value="commode">Commode</option>
+                    <option value="basin">Basin</option>
+                    <option value="Sink">Sink</option>
+                  </select>
                 </div>
+
                 <div class="form-group col-md-6">
                   <label for="prodCompany">Product Company</label>
                   <input
@@ -282,6 +294,7 @@
                   <label for="coverImage">Upload Cover Image</label>
                   <div class="custom-file">
                     <input
+                      name="imageCover"
                       type="file"
                       class="custom-file-input"
                       id="coverImage"
@@ -295,6 +308,7 @@
                   <label for="prodImages">Upload Product Images</label>
                   <div class="custom-file">
                     <input
+                      name="images"
                       type="file"
                       class="custom-file-input"
                       id="prodImages"
@@ -328,7 +342,7 @@
                 <div class="form-group col-md-4">
                   <label for="category">Category</label>
                   <select id="prodCategory" class="form-control">
-                    <option value="">Select</option>
+                    <option value="">Select Category</option>
                     <option value="tile">Tiles</option>
                     <option value="taps">Taps</option>
                     <option value="sanitaryWare">Sanitary Ware</option>
@@ -355,11 +369,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button
-              id="createProdBtn"
-              class="btn btn-primary"
-              data-dismiss="modal"
-            >
+            <button id="createProdBtn" class="btn btn-primary">
               Create Product
             </button>
           </div>

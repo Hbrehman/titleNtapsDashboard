@@ -1,3 +1,5 @@
+const url = "https://tilentaps.herokuapp.com/";
+
 const loginBtn = document.getElementById("BtnLogIn");
 const adminEmail = document.getElementById("adminEmail");
 const adminPassword = document.getElementById("adminPassword");
@@ -27,13 +29,15 @@ function validateLoginInput() {
     return true;
   }
 }
+// https://tilentaps.herokuapp.com
 // Loggin in users
 async function loginUser(userData) {
   try {
     const response = await axios.post(
-      "http://127.0.0.1:4000/api/v1/users/adminLogin",
+      `${url}api/v1/users/adminLogin`,
       userData
     );
+    console.log(response);
     if (response.status === 200) {
       //   showAlert("success", "You are successfully logged In.");
       window.location = "index.html";

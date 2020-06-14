@@ -19,7 +19,7 @@ window.addEventListener("load", () => {
 
 async function listProductsOnUI() {
   try {
-    const response = await axios.get(`${url}api/v1/products`);
+    const response = await axios.get(`https://tilentaps.herokuapp.com/api/v1/products`);
     result = response.data.data.doc;
     showProds(result);
   } catch (ex) {
@@ -33,7 +33,7 @@ createProdBtn.addEventListener("click", async () => {
     const inputData = gatInputData();
     // console.log(inputData);
     try {
-      let response = await axios.post(`${url}api/v1/products`, inputData);
+      let response = await axios.post(`https://tilentaps.herokuapp.com/api/v1/products`, inputData);
       if (response.data.status === "success") {
         // console.log(response);
         showAlert("success", "Product created Successfully");
@@ -55,7 +55,7 @@ function showProds(docs) {
     markup += `
         <tr>
             <th scope="row">
-                <img src="${url}img/products/${el.imageCover}" width="64" height="54" alt="" />
+                <img src="https://tilentaps.herokuapp.com/img/products/${el.imageCover}" width="64" height="54" alt="" />
             </th>
             <td>${el.name}</td>
             <td>${el.type}</td>

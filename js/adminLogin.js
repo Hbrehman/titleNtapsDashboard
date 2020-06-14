@@ -1,4 +1,4 @@
-const url = "https://tilentaps.herokuapp.com/";
+// const url = "https://tilentaps.herokuapp.com/";
 
 const loginBtn = document.getElementById("BtnLogIn");
 const adminEmail = document.getElementById("adminEmail");
@@ -34,7 +34,7 @@ function validateLoginInput() {
 async function loginUser(userData) {
   try {
     const response = await axios.post(
-      `${url}api/v1/users/adminLogin`,
+      `https://tilentaps.herokuapp.com/api/v1/users/adminLogin`,
       userData
     );
     console.log(response);

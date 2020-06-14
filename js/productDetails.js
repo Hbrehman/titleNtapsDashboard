@@ -1,4 +1,4 @@
-const url = "https://tilentaps.herokuapp.com/";
+// const url = "https://tilentaps.herokuapp.com/";
 
 const dataForm = document.getElementById("prodDataForm");
 const prodHeadingName = document.getElementById("prodHeadingName");
@@ -21,7 +21,9 @@ const productCoverImage = document.getElementById("coverImage");
 
 window.addEventListener("load", async () => {
   try {
-    const response = await axios.get(`${url}api/v1/products/${productId}`);
+    const response = await axios.get(
+      `https://tilentaps.herokuapp.com/api/v1/products/${productId}`
+    );
     const product = response.data.data.doc;
     updateUI(product);
   } catch (ex) {
@@ -57,7 +59,7 @@ updateChangesBtn.addEventListener("click", async () => {
 async function patchToServer(inputData) {
   try {
     let response = await axios.patch(
-      `${url}api/v1/products/${productId}`,
+      `https://tilentaps.herokuapp.com/api/v1/products/${productId}`,
       inputData
     );
     return response;
@@ -69,7 +71,9 @@ async function patchToServer(inputData) {
 
 deleteProdBtn.addEventListener("click", async () => {
   try {
-    let response = await axios.delete(`${url}api/v1/products/${productId}`);
+    let response = await axios.delete(
+      `https://tilentaps.herokuapp.com/api/v1/products/${productId}`
+    );
     if (response.status === 204) {
       showAlert("error", "Product delted Successfully");
       window.location = "products.html";

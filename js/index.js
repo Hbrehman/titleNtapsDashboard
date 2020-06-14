@@ -1,10 +1,12 @@
-const url = "https://tilentaps.herokuapp.com/";
+// const url = "https://tilentaps.herokuapp.com/";
 
 const logoutLink = document.getElementById("logoutLink");
 
 logoutLink.addEventListener("click", async () => {
   try {
-    const response = await axios.get(`${url}api/v1/users/logout`);
+    const response = await axios.get(
+      `https://tilentaps.herokuapp.com/api/v1/users/logout`
+    );
     if (response.data.status === "success") {
       localStorage.clear();
       window.location = "index.html";

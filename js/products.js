@@ -1,4 +1,4 @@
-const url = "https://tilentaps.herokuapp.com/";
+// const url = "https://tilentaps.herokuapp.com/";
 
 const tableBody = document.getElementById("prod-table-body");
 
@@ -19,7 +19,9 @@ window.addEventListener("load", () => {
 
 async function listProductsOnUI() {
   try {
-    const response = await axios.get(`https://tilentaps.herokuapp.com/api/v1/products`);
+    const response = await axios.get(
+      `https://tilentaps.herokuapp.com/api/v1/products`
+    );
     result = response.data.data.doc;
     showProds(result);
   } catch (ex) {
@@ -33,7 +35,10 @@ createProdBtn.addEventListener("click", async () => {
     const inputData = gatInputData();
     // console.log(inputData);
     try {
-      let response = await axios.post(`https://tilentaps.herokuapp.com/api/v1/products`, inputData);
+      let response = await axios.post(
+        `https://tilentaps.herokuapp.com/api/v1/products`,
+        inputData
+      );
       if (response.data.status === "success") {
         // console.log(response);
         showAlert("success", "Product created Successfully");

@@ -10,15 +10,9 @@
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/style.css" />
+  
     <title>Products | tileNtaps</title>
-  </head>
+  <link href="main.e42a296ef5fe73ab9155.css" rel="stylesheet"></head>
 
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
@@ -48,7 +42,7 @@
           </ul>
 
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown mr-3">
+            <!-- <li class="nav-item dropdown mr-3">
               <a
                 href="#"
                 class="nav-link dropdown-toggle"
@@ -64,9 +58,9 @@
                   <i class="fas fa-cog"></i> Settings
                 </a>
               </div>
-            </li>
+            </li> -->
             <li class="nav-item">
-              <a href="index.html" class="nav-link">
+              <a href="javascript:void(0)" id="logoutLink" class="nav-link">
                 <i class="fas fa-user-times"></i> Logout
               </a>
             </li>
@@ -104,13 +98,13 @@
           </div>
           <div class="col-md-6 offset-md-3">
             <div class="input-group">
-              <input
+              <!-- <input
                 type="text"
                 class="form-control"
                 placeholder="Search Products..."
               />
               <div class="input-group-append">
-                <button class="btn btn-primary">Search</button>
+                <button class="btn btn-primary">Search</button> -->
               </div>
             </div>
           </div>
@@ -216,7 +210,7 @@
           <div class="col">
             <p class="lead text-center">
               Copyright &copy;
-              <span id="year"></span>
+              <span id="year">2020</span>
               tileNtaps
             </p>
           </div>
@@ -377,28 +371,11 @@
       </div>
     </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-      crossorigin="anonymous"
-    ></script>
+   
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
-
-    <script src="./js/products.js"></script>
-
-    <script>
-      // Get the current year for the copyright
-      $("#year").text(new Date().getFullYear());
-    </script>
-  </body>
+     <script type="text/javascript" src="products.665f6655e71bef718ed5.js"></script></body>
 </html>
